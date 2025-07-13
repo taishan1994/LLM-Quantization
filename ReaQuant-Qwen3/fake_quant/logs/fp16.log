@@ -1,0 +1,242 @@
+nohup: ignoring input
+INFO 07-06 18:32:03 [__init__.py:244] Automatically detected platform cuda.
+2025-07-06 18:32:06,432 - resq - INFO - the rank is 0
+[rank0]:[W706 18:32:06.997513814 ProcessGroupNCCL.cpp:4715] [PG ID 0 PG GUID 0 Rank 0]  using GPU 0 as device used by this process is currently unknown. This can potentially cause a hang if this rank to GPU mapping is incorrect. You can pecify device_id in init_process_group() to force use of a particular device.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM has generative capabilities, as `prepare_inputs_for_generation` is explicitly defined. However, it doesn't directly inherit from `GenerationMixin`. From 👉v4.50👈 onwards, `PreTrainedModel` will NOT inherit from `GenerationMixin`, and this model will lose the ability to call `generate` and other related functions.
+  - If you're using `trust_remote_code=True`, you can get rid of this warning by loading the model with an auto class. See https://huggingface.co/docs/transformers/en/model_doc/auto#auto-classes
+  - If you are the owner of the model architecture code, please modify your model class such that it inherits from `GenerationMixin` (after `PreTrainedModel`, otherwise you'll get an exception).
+  - If you are not the owner of the model architecture class, please contact the model code owner to update it.
+Qwen2ForCausalLM(
+  (model): Qwen2Model(
+    (embed_tokens): Embedding(151936, 1024)
+    (layers): ModuleList(
+      (0-27): 28 x Qwen2DecoderLayer(
+        (self_attn): Qwen2Attention(
+          (q_proj): Linear(in_features=1024, out_features=2048, bias=False)
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=False)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=False)
+          (o_proj): Linear(in_features=2048, out_features=1024, bias=False)
+          (q_norm): Qwen2RMSNorm((128,), eps=1e-06)
+          (k_norm): Qwen2RMSNorm((128,), eps=1e-06)
+          (rotary_emb): Qwen2RotaryEmbedding()
+        )
+        (mlp): Qwen2MLP(
+          (gate_proj): Linear(in_features=1024, out_features=3072, bias=False)
+          (up_proj): Linear(in_features=1024, out_features=3072, bias=False)
+          (down_proj): Linear(in_features=3072, out_features=1024, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): Qwen2RMSNorm((1024,), eps=1e-06)
+        (post_attention_layernorm): Qwen2RMSNorm((1024,), eps=1e-06)
+      )
+    )
+    (norm): Qwen2RMSNorm((1024,), eps=1e-06)
+  )
+  (lm_head): Linear(in_features=1024, out_features=151936, bias=False)
+)
+2025-07-06 18:32:07,772 - resq - INFO - Model PTQ completed Qwen2ForCausalLM(
+  (model): Qwen2Model(
+    (embed_tokens): Embedding(151936, 1024)
+    (layers): ModuleList(
+      (0-27): 28 x Qwen2DecoderLayer(
+        (self_attn): Qwen2Attention(
+          (q_proj): Linear(in_features=1024, out_features=2048, bias=False)
+          (k_proj): Linear(in_features=1024, out_features=1024, bias=False)
+          (v_proj): Linear(in_features=1024, out_features=1024, bias=False)
+          (o_proj): Linear(in_features=2048, out_features=1024, bias=False)
+          (q_norm): Qwen2RMSNorm((128,), eps=1e-06)
+          (k_norm): Qwen2RMSNorm((128,), eps=1e-06)
+          (rotary_emb): Qwen2RotaryEmbedding()
+        )
+        (mlp): Qwen2MLP(
+          (gate_proj): Linear(in_features=1024, out_features=3072, bias=False)
+          (up_proj): Linear(in_features=1024, out_features=3072, bias=False)
+          (down_proj): Linear(in_features=3072, out_features=1024, bias=False)
+          (act_fn): SiLU()
+        )
+        (input_layernorm): Qwen2RMSNorm((1024,), eps=1e-06)
+        (post_attention_layernorm): Qwen2RMSNorm((1024,), eps=1e-06)
+      )
+    )
+    (norm): Qwen2RMSNorm((1024,), eps=1e-06)
+  )
+  (lm_head): Linear(in_features=1024, out_features=151936, bias=False)
+)
+2025-07-06 18:32:07,772 - resq - INFO - Start to load tokenizer...
+2025-07-06 18:32:08,148 - resq - INFO - Complete tokenizer loading...
+get_wikitext2
+Token indices sequence length is longer than the specified maximum sequence length for this model (299078 > 2048). Running this sequence through the model will result in indexing errors
+(Eval) Layers:   0%|          | 0/28 [00:00<?, ?it/s](Eval) Layers:   4%|▎         | 1/28 [00:00<00:21,  1.25it/s](Eval) Layers:   7%|▋         | 2/28 [00:01<00:16,  1.62it/s](Eval) Layers:  11%|█         | 3/28 [00:01<00:14,  1.78it/s](Eval) Layers:  14%|█▍        | 4/28 [00:02<00:12,  1.87it/s](Eval) Layers:  18%|█▊        | 5/28 [00:02<00:11,  1.92it/s](Eval) Layers:  21%|██▏       | 6/28 [00:03<00:11,  1.95it/s](Eval) Layers:  25%|██▌       | 7/28 [00:03<00:10,  1.96it/s](Eval) Layers:  29%|██▊       | 8/28 [00:04<00:10,  1.98it/s](Eval) Layers:  32%|███▏      | 9/28 [00:04<00:09,  1.99it/s](Eval) Layers:  36%|███▌      | 10/28 [00:05<00:09,  1.99it/s](Eval) Layers:  39%|███▉      | 11/28 [00:05<00:08,  2.00it/s](Eval) Layers:  43%|████▎     | 12/28 [00:06<00:07,  2.00it/s](Eval) Layers:  46%|████▋     | 13/28 [00:06<00:07,  2.01it/s](Eval) Layers:  50%|█████     | 14/28 [00:07<00:06,  2.01it/s](Eval) Layers:  54%|█████▎    | 15/28 [00:07<00:06,  2.01it/s](Eval) Layers:  57%|█████▋    | 16/28 [00:08<00:05,  2.00it/s](Eval) Layers:  61%|██████    | 17/28 [00:08<00:05,  2.00it/s](Eval) Layers:  64%|██████▍   | 18/28 [00:09<00:04,  2.00it/s](Eval) Layers:  68%|██████▊   | 19/28 [00:09<00:04,  2.00it/s](Eval) Layers:  71%|███████▏  | 20/28 [00:10<00:03,  2.01it/s](Eval) Layers:  75%|███████▌  | 21/28 [00:10<00:03,  2.01it/s](Eval) Layers:  79%|███████▊  | 22/28 [00:11<00:02,  2.02it/s](Eval) Layers:  82%|████████▏ | 23/28 [00:11<00:02,  2.02it/s](Eval) Layers:  86%|████████▌ | 24/28 [00:12<00:01,  2.02it/s](Eval) Layers:  89%|████████▉ | 25/28 [00:12<00:01,  2.01it/s](Eval) Layers:  93%|█████████▎| 26/28 [00:13<00:00,  2.01it/s](Eval) Layers:  96%|█████████▋| 27/28 [00:13<00:00,  2.01it/s](Eval) Layers: 100%|██████████| 28/28 [00:14<00:00,  2.01it/s](Eval) Layers: 100%|██████████| 28/28 [00:14<00:00,  1.97it/s]
+2025-07-06 18:32:49,632 - resq - INFO - wiki2 ppl is: 20.97850227355957
+INFO:resq:wiki2 ppl is: 20.97850227355957
+WARNING:lm_eval.models.huggingface:`pretrained` model kwarg is not of type `str`. Many other model arguments may be ignored. Please do not launch via accelerate or use `parallelize=True` if passing an existing model this way.
+WARNING:lm_eval.models.huggingface:Passed an already-initialized model through `pretrained`, assuming single-process call to evaluate() or custom distributed integration
+False
+WARNING:lm_eval.api.task:[Task: boolq] metric acc is defined, but aggregation is not. using default aggregation=mean
+WARNING:lm_eval.api.task:[Task: boolq] metric acc is defined, but higher_is_better is not. using default higher_is_better=True
+/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/datasets/load.py:1231: FutureWarning: The repository for social_i_qa contains custom code which must be executed to correctly load the dataset. You can inspect the repository content at https://hf.co/datasets/social_i_qa
+You can avoid this message in future by passing the argument `trust_remote_code=True`.
+Passing `trust_remote_code=True` will be mandatory to load this dataset from the next major release of `datasets`.
+  warnings.warn(
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of openbookqa from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of arc_challenge from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of arc_easy from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of winogrande from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of hellaswag from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of social_iqa from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of piqa from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of boolq from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_abstract_algebra from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_anatomy from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_astronomy from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_college_biology from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_college_chemistry from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_college_computer_science from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_college_mathematics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_college_physics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_computer_security from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_conceptual_physics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_electrical_engineering from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_elementary_mathematics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_biology from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_chemistry from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_computer_science from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_mathematics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_physics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_statistics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_machine_learning from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_business_ethics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_clinical_knowledge from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_college_medicine from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_global_facts from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_human_aging from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_management from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_marketing from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_medical_genetics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_miscellaneous from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_nutrition from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_professional_accounting from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_professional_medicine from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_virology from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_econometrics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_geography from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_government_and_politics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_macroeconomics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_microeconomics from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_psychology from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_human_sexuality from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_professional_psychology from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_public_relations from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_security_studies from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_sociology from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_us_foreign_policy from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_formal_logic from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_european_history from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_us_history from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_high_school_world_history from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_international_law from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_jurisprudence from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_logical_fallacies from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_moral_disputes from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_moral_scenarios from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_philosophy from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_prehistory from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_professional_law from None to 0
+WARNING:lm_eval.evaluator:Overwriting default num_fewshot of mmlu_world_religions from None to 0
+  0%|          | 0/500 [00:00<?, ?it/s] 45%|████▌     | 226/500 [00:00<00:00, 2252.73it/s] 91%|█████████ | 456/500 [00:00<00:00, 2278.85it/s]100%|██████████| 500/500 [00:00<00:00, 2270.35it/s]
+  0%|          | 0/1172 [00:00<?, ?it/s] 10%|█         | 119/1172 [00:00<00:00, 1184.98it/s] 20%|██        | 238/1172 [00:00<00:00, 1175.38it/s] 31%|███       | 360/1172 [00:00<00:00, 1192.43it/s] 41%|████      | 483/1172 [00:00<00:00, 1203.83it/s] 52%|█████▏    | 606/1172 [00:00<00:00, 1211.54it/s] 62%|██████▏   | 728/1172 [00:00<00:00, 1203.22it/s] 73%|███████▎  | 852/1172 [00:00<00:00, 1213.78it/s] 83%|████████▎ | 976/1172 [00:00<00:00, 1220.41it/s] 94%|█████████▍| 1100/1172 [00:00<00:00, 1226.08it/s]100%|██████████| 1172/1172 [00:00<00:00, 1207.92it/s]
+  0%|          | 0/2376 [00:00<?, ?it/s]  5%|▌         | 125/2376 [00:00<00:01, 1243.43it/s] 11%|█         | 250/2376 [00:00<00:01, 1243.63it/s] 16%|█▌        | 375/2376 [00:00<00:01, 1203.46it/s] 21%|██        | 500/2376 [00:00<00:01, 1219.93it/s] 26%|██▋       | 625/2376 [00:00<00:01, 1227.08it/s] 32%|███▏      | 750/2376 [00:00<00:01, 1233.48it/s] 37%|███▋      | 874/2376 [00:00<00:01, 1235.51it/s] 42%|████▏     | 999/2376 [00:00<00:01, 1238.98it/s] 47%|████▋     | 1124/2376 [00:00<00:01, 1239.85it/s] 53%|█████▎    | 1249/2376 [00:01<00:00, 1241.86it/s] 58%|█████▊    | 1374/2376 [00:01<00:00, 1230.18it/s] 63%|██████▎   | 1498/2376 [00:01<00:00, 1232.49it/s] 68%|██████▊   | 1623/2376 [00:01<00:00, 1235.24it/s] 74%|███████▎  | 1748/2376 [00:01<00:00, 1237.56it/s] 79%|███████▉  | 1872/2376 [00:01<00:00, 1236.52it/s] 84%|████████▍ | 1997/2376 [00:01<00:00, 1237.66it/s] 89%|████████▉ | 2122/2376 [00:01<00:00, 1238.74it/s] 95%|█████████▍| 2247/2376 [00:01<00:00, 1239.77it/s]100%|█████████▉| 2371/2376 [00:01<00:00, 1229.54it/s]100%|██████████| 2376/2376 [00:01<00:00, 1233.23it/s]
+  0%|          | 0/1267 [00:00<?, ?it/s]100%|██████████| 1267/1267 [00:00<00:00, 78256.78it/s]
+  0%|          | 0/10042 [00:00<?, ?it/s]  3%|▎         | 302/10042 [00:00<00:03, 3015.36it/s]  6%|▌         | 609/10042 [00:00<00:03, 3045.05it/s]  9%|▉         | 914/10042 [00:00<00:03, 3005.68it/s] 12%|█▏        | 1219/10042 [00:00<00:02, 3022.06it/s] 15%|█▌        | 1524/10042 [00:00<00:02, 3029.49it/s] 18%|█▊        | 1828/10042 [00:00<00:02, 3031.60it/s] 21%|██        | 2132/10042 [00:00<00:02, 3031.21it/s] 24%|██▍       | 2438/10042 [00:00<00:02, 3039.35it/s] 27%|██▋       | 2742/10042 [00:00<00:02, 3036.58it/s] 30%|███       | 3047/10042 [00:01<00:02, 3038.43it/s] 33%|███▎      | 3351/10042 [00:01<00:02, 3000.60it/s] 36%|███▋      | 3652/10042 [00:01<00:02, 3000.18it/s] 39%|███▉      | 3953/10042 [00:01<00:02, 3002.58it/s] 42%|████▏     | 4254/10042 [00:01<00:01, 2999.99it/s] 45%|████▌     | 4555/10042 [00:01<00:01, 3001.08it/s] 48%|████▊     | 4856/10042 [00:01<00:01, 2995.91it/s] 51%|█████▏    | 5156/10042 [00:02<00:03, 1301.20it/s] 54%|█████▍    | 5457/10042 [00:02<00:02, 1568.26it/s] 57%|█████▋    | 5757/10042 [00:02<00:02, 1829.15it/s] 60%|██████    | 6059/10042 [00:02<00:01, 2074.36it/s] 63%|██████▎   | 6361/10042 [00:02<00:01, 2288.92it/s] 66%|██████▋   | 6660/10042 [00:02<00:01, 2452.63it/s] 69%|██████▉   | 6960/10042 [00:02<00:01, 2594.42it/s] 72%|███████▏  | 7263/10042 [00:02<00:01, 2710.77it/s] 75%|███████▌  | 7566/10042 [00:02<00:00, 2797.90it/s] 78%|███████▊  | 7868/10042 [00:03<00:00, 2860.79it/s] 81%|████████▏ | 8172/10042 [00:03<00:00, 2908.65it/s] 84%|████████▍ | 8476/10042 [00:03<00:00, 2946.55it/s] 87%|████████▋ | 8782/10042 [00:03<00:00, 2977.37it/s] 90%|█████████ | 9087/10042 [00:03<00:00, 2995.94it/s] 94%|█████████▎| 9390/10042 [00:03<00:00, 2990.73it/s] 97%|█████████▋| 9695/10042 [00:03<00:00, 3006.47it/s]100%|█████████▉| 10001/10042 [00:03<00:00, 3020.96it/s]100%|██████████| 10042/10042 [00:03<00:00, 2666.41it/s]
+  0%|          | 0/1954 [00:00<?, ?it/s]  5%|▍         | 97/1954 [00:00<00:01, 969.23it/s] 10%|█         | 196/1954 [00:00<00:01, 980.07it/s] 15%|█▌        | 295/1954 [00:00<00:01, 983.54it/s] 20%|██        | 394/1954 [00:00<00:01, 977.01it/s] 25%|██▌       | 494/1954 [00:00<00:01, 982.71it/s] 30%|███       | 594/1954 [00:00<00:01, 987.00it/s] 36%|███▌      | 694/1954 [00:00<00:01, 989.74it/s] 41%|████      | 794/1954 [00:00<00:01, 990.01it/s] 46%|████▌     | 894/1954 [00:00<00:01, 989.23it/s] 51%|█████     | 994/1954 [00:01<00:00, 991.02it/s] 56%|█████▌    | 1094/1954 [00:01<00:00, 992.62it/s] 61%|██████    | 1194/1954 [00:01<00:00, 978.49it/s] 66%|██████▌   | 1293/1954 [00:01<00:00, 981.07it/s] 71%|███████▏  | 1393/1954 [00:01<00:00, 985.89it/s] 76%|███████▋  | 1494/1954 [00:01<00:00, 990.40it/s] 82%|████████▏ | 1594/1954 [00:01<00:00, 993.18it/s] 87%|████████▋ | 1695/1954 [00:01<00:00, 995.60it/s] 92%|█████████▏| 1796/1954 [00:01<00:00, 997.07it/s] 97%|█████████▋| 1896/1954 [00:01<00:00, 997.71it/s]100%|██████████| 1954/1954 [00:01<00:00, 989.54it/s]
+  0%|          | 0/1838 [00:00<?, ?it/s]  6%|▋         | 115/1838 [00:00<00:01, 1145.29it/s] 13%|█▎        | 234/1838 [00:00<00:01, 1169.93it/s] 19%|█▉        | 355/1838 [00:00<00:01, 1185.68it/s] 26%|██▌       | 476/1838 [00:00<00:01, 1193.82it/s] 32%|███▏      | 597/1838 [00:00<00:01, 1197.80it/s] 39%|███▉      | 717/1838 [00:00<00:00, 1196.50it/s] 46%|████▌     | 837/1838 [00:00<00:00, 1197.40it/s] 52%|█████▏    | 958/1838 [00:00<00:00, 1200.83it/s] 59%|█████▊    | 1079/1838 [00:00<00:00, 1192.50it/s] 65%|██████▌   | 1200/1838 [00:01<00:00, 1195.19it/s] 72%|███████▏  | 1321/1838 [00:01<00:00, 1196.65it/s] 78%|███████▊  | 1441/1838 [00:01<00:00, 1197.28it/s] 85%|████████▍ | 1562/1838 [00:01<00:00, 1199.51it/s] 92%|█████████▏| 1683/1838 [00:01<00:00, 1200.38it/s] 98%|█████████▊| 1804/1838 [00:01<00:00, 1201.36it/s]100%|██████████| 1838/1838 [00:01<00:00, 1195.63it/s]
+  0%|          | 0/3270 [00:00<?, ?it/s]  7%|▋         | 217/3270 [00:00<00:01, 2166.37it/s] 13%|█▎        | 437/3270 [00:00<00:01, 2181.73it/s] 20%|██        | 656/3270 [00:00<00:01, 2169.90it/s] 27%|██▋       | 877/3270 [00:00<00:01, 2185.21it/s] 34%|███▎      | 1098/3270 [00:00<00:00, 2190.79it/s] 40%|████      | 1318/3270 [00:00<00:00, 2193.21it/s] 47%|████▋     | 1538/3270 [00:00<00:00, 2193.83it/s] 54%|█████▍    | 1758/3270 [00:00<00:00, 2192.02it/s] 61%|██████    | 1979/3270 [00:00<00:00, 2196.81it/s] 67%|██████▋   | 2199/3270 [00:01<00:00, 2196.08it/s] 74%|███████▍  | 2419/3270 [00:01<00:00, 2193.34it/s] 81%|████████  | 2639/3270 [00:01<00:00, 2194.37it/s] 87%|████████▋ | 2859/3270 [00:01<00:00, 2193.50it/s] 94%|█████████▍| 3079/3270 [00:01<00:00, 2190.61it/s]100%|██████████| 3270/3270 [00:01<00:00, 2190.46it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 66%|██████▌   | 66/100 [00:00<00:00, 658.63it/s]100%|██████████| 100/100 [00:00<00:00, 660.27it/s]
+  0%|          | 0/135 [00:00<?, ?it/s] 49%|████▉     | 66/135 [00:00<00:00, 650.53it/s] 99%|█████████▊| 133/135 [00:00<00:00, 660.02it/s]100%|██████████| 135/135 [00:00<00:00, 658.11it/s]
+  0%|          | 0/152 [00:00<?, ?it/s] 45%|████▍     | 68/152 [00:00<00:00, 671.70it/s] 89%|████████▉ | 136/152 [00:00<00:00, 669.44it/s]100%|██████████| 152/152 [00:00<00:00, 668.84it/s]
+  0%|          | 0/144 [00:00<?, ?it/s] 47%|████▋     | 68/144 [00:00<00:00, 670.43it/s] 94%|█████████▍| 136/144 [00:00<00:00, 670.92it/s]100%|██████████| 144/144 [00:00<00:00, 670.75it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 665.71it/s]100%|██████████| 100/100 [00:00<00:00, 666.11it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 666.50it/s]100%|██████████| 100/100 [00:00<00:00, 667.59it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 666.74it/s]100%|██████████| 100/100 [00:00<00:00, 667.11it/s]
+  0%|          | 0/102 [00:00<?, ?it/s] 66%|██████▌   | 67/102 [00:00<00:00, 667.80it/s]100%|██████████| 102/102 [00:00<00:00, 667.01it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 665.54it/s]100%|██████████| 100/100 [00:00<00:00, 665.25it/s]
+  0%|          | 0/235 [00:00<?, ?it/s] 29%|██▊       | 67/235 [00:00<00:00, 665.07it/s] 57%|█████▋    | 134/235 [00:00<00:00, 666.33it/s] 86%|████████▌ | 201/235 [00:00<00:00, 654.97it/s]100%|██████████| 235/235 [00:00<00:00, 659.09it/s]
+  0%|          | 0/145 [00:00<?, ?it/s] 46%|████▌     | 67/145 [00:00<00:00, 666.01it/s] 93%|█████████▎| 135/145 [00:00<00:00, 668.71it/s]100%|██████████| 145/145 [00:00<00:00, 667.85it/s]
+  0%|          | 0/378 [00:00<?, ?it/s] 18%|█▊        | 67/378 [00:00<00:00, 669.67it/s] 36%|███▌      | 135/378 [00:00<00:00, 670.12it/s] 54%|█████▎    | 203/378 [00:00<00:00, 670.18it/s] 72%|███████▏  | 271/378 [00:00<00:00, 670.70it/s] 90%|████████▉ | 339/378 [00:00<00:00, 669.85it/s]100%|██████████| 378/378 [00:00<00:00, 670.09it/s]
+  0%|          | 0/310 [00:00<?, ?it/s] 22%|██▏       | 67/310 [00:00<00:00, 668.52it/s] 43%|████▎     | 134/310 [00:00<00:00, 668.82it/s] 65%|██████▍   | 201/310 [00:00<00:00, 668.98it/s] 87%|████████▋ | 269/310 [00:00<00:00, 670.81it/s]100%|██████████| 310/310 [00:00<00:00, 669.72it/s]
+  0%|          | 0/203 [00:00<?, ?it/s] 33%|███▎      | 67/203 [00:00<00:00, 668.34it/s] 66%|██████▌   | 134/203 [00:00<00:00, 656.03it/s] 99%|█████████▉| 201/203 [00:00<00:00, 661.97it/s]100%|██████████| 203/203 [00:00<00:00, 660.98it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 666.35it/s]100%|██████████| 100/100 [00:00<00:00, 666.20it/s]
+  0%|          | 0/270 [00:00<?, ?it/s] 25%|██▍       | 67/270 [00:00<00:00, 667.02it/s] 50%|████▉     | 134/270 [00:00<00:00, 668.55it/s] 74%|███████▍  | 201/270 [00:00<00:00, 667.88it/s] 99%|█████████▉| 268/270 [00:00<00:00, 666.81it/s]100%|██████████| 270/270 [00:00<00:00, 667.01it/s]
+  0%|          | 0/151 [00:00<?, ?it/s] 43%|████▎     | 65/151 [00:00<00:00, 642.00it/s] 87%|████████▋ | 132/151 [00:00<00:00, 657.27it/s]100%|██████████| 151/151 [00:00<00:00, 656.33it/s]
+  0%|          | 0/216 [00:00<?, ?it/s] 31%|███       | 67/216 [00:00<00:00, 664.55it/s] 62%|██████▎   | 135/216 [00:00<00:00, 668.35it/s] 94%|█████████▎| 202/216 [00:00<00:00, 668.98it/s]100%|██████████| 216/216 [00:00<00:00, 667.92it/s]
+  0%|          | 0/112 [00:00<?, ?it/s] 60%|█████▉    | 67/112 [00:00<00:00, 666.06it/s]100%|██████████| 112/112 [00:00<00:00, 667.09it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 667.94it/s]100%|██████████| 100/100 [00:00<00:00, 667.44it/s]
+  0%|          | 0/265 [00:00<?, ?it/s] 26%|██▌       | 68/265 [00:00<00:00, 670.30it/s] 51%|█████▏    | 136/265 [00:00<00:00, 671.26it/s] 77%|███████▋  | 204/265 [00:00<00:00, 670.59it/s]100%|██████████| 265/265 [00:00<00:00, 670.66it/s]
+  0%|          | 0/173 [00:00<?, ?it/s] 39%|███▊      | 67/173 [00:00<00:00, 667.95it/s] 78%|███████▊  | 135/173 [00:00<00:00, 670.05it/s]100%|██████████| 173/173 [00:00<00:00, 669.32it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 66%|██████▌   | 66/100 [00:00<00:00, 659.84it/s]100%|██████████| 100/100 [00:00<00:00, 662.21it/s]
+  0%|          | 0/223 [00:00<?, ?it/s] 30%|███       | 67/223 [00:00<00:00, 668.93it/s] 60%|██████    | 134/223 [00:00<00:00, 669.32it/s] 90%|█████████ | 201/223 [00:00<00:00, 667.80it/s]100%|██████████| 223/223 [00:00<00:00, 667.40it/s]
+  0%|          | 0/103 [00:00<?, ?it/s] 65%|██████▌   | 67/103 [00:00<00:00, 667.87it/s]100%|██████████| 103/103 [00:00<00:00, 667.45it/s]
+  0%|          | 0/234 [00:00<?, ?it/s] 29%|██▊       | 67/234 [00:00<00:00, 668.41it/s] 57%|█████▋    | 134/234 [00:00<00:00, 669.05it/s] 86%|████████▌ | 201/234 [00:00<00:00, 660.03it/s]100%|██████████| 234/234 [00:00<00:00, 663.28it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 665.43it/s]100%|██████████| 100/100 [00:00<00:00, 665.10it/s]
+  0%|          | 0/783 [00:00<?, ?it/s]  9%|▊         | 67/783 [00:00<00:01, 666.38it/s] 17%|█▋        | 135/783 [00:00<00:00, 669.32it/s] 26%|██▌       | 203/783 [00:00<00:00, 670.53it/s] 35%|███▍      | 271/783 [00:00<00:00, 670.66it/s] 43%|████▎     | 339/783 [00:00<00:00, 670.22it/s] 52%|█████▏    | 407/783 [00:00<00:00, 669.85it/s] 61%|██████    | 474/783 [00:00<00:00, 669.61it/s] 69%|██████▉   | 542/783 [00:00<00:00, 669.85it/s] 78%|███████▊  | 609/783 [00:00<00:00, 669.43it/s] 86%|████████▋ | 677/783 [00:01<00:00, 669.86it/s] 95%|█████████▌| 744/783 [00:01<00:00, 669.47it/s]100%|██████████| 783/783 [00:01<00:00, 669.60it/s]
+  0%|          | 0/306 [00:00<?, ?it/s] 22%|██▏       | 68/306 [00:00<00:00, 671.86it/s] 44%|████▍     | 136/306 [00:00<00:00, 660.77it/s] 67%|██████▋   | 204/306 [00:00<00:00, 667.04it/s] 89%|████████▉ | 272/306 [00:00<00:00, 668.69it/s]100%|██████████| 306/306 [00:00<00:00, 667.41it/s]
+  0%|          | 0/282 [00:00<?, ?it/s] 24%|██▍       | 67/282 [00:00<00:00, 667.36it/s] 48%|████▊     | 134/282 [00:00<00:00, 668.39it/s] 71%|███████▏  | 201/282 [00:00<00:00, 667.94it/s] 95%|█████████▌| 268/282 [00:00<00:00, 668.67it/s]100%|██████████| 282/282 [00:00<00:00, 668.27it/s]
+  0%|          | 0/272 [00:00<?, ?it/s] 22%|██▏       | 60/272 [00:00<00:00, 597.55it/s] 47%|████▋     | 127/272 [00:00<00:00, 635.89it/s] 71%|███████▏  | 194/272 [00:00<00:00, 650.13it/s] 96%|█████████▌| 261/272 [00:00<00:00, 656.23it/s]100%|██████████| 272/272 [00:00<00:00, 648.49it/s]
+  0%|          | 0/166 [00:00<?, ?it/s] 40%|████      | 67/166 [00:00<00:00, 662.43it/s] 81%|████████  | 134/166 [00:00<00:00, 662.65it/s]100%|██████████| 166/166 [00:00<00:00, 662.27it/s]
+  0%|          | 0/114 [00:00<?, ?it/s] 58%|█████▊    | 66/114 [00:00<00:00, 657.64it/s]100%|██████████| 114/114 [00:00<00:00, 642.87it/s]
+  0%|          | 0/198 [00:00<?, ?it/s] 34%|███▍      | 67/198 [00:00<00:00, 664.05it/s] 68%|██████▊   | 134/198 [00:00<00:00, 664.36it/s]100%|██████████| 198/198 [00:00<00:00, 665.46it/s]
+  0%|          | 0/193 [00:00<?, ?it/s] 35%|███▍      | 67/193 [00:00<00:00, 664.48it/s] 69%|██████▉   | 134/193 [00:00<00:00, 665.97it/s]100%|██████████| 193/193 [00:00<00:00, 664.73it/s]
+  0%|          | 0/390 [00:00<?, ?it/s] 17%|█▋        | 67/390 [00:00<00:00, 665.19it/s] 34%|███▍      | 134/390 [00:00<00:01, 165.21it/s] 52%|█████▏    | 202/390 [00:00<00:00, 252.94it/s] 69%|██████▊   | 268/390 [00:00<00:00, 332.78it/s] 85%|████████▌ | 332/390 [00:01<00:00, 400.02it/s]100%|██████████| 390/390 [00:01<00:00, 351.60it/s]
+  0%|          | 0/238 [00:00<?, ?it/s] 28%|██▊       | 67/238 [00:00<00:00, 661.18it/s] 56%|█████▋    | 134/238 [00:00<00:00, 662.06it/s] 84%|████████▍ | 201/238 [00:00<00:00, 663.38it/s]100%|██████████| 238/238 [00:00<00:00, 661.95it/s]
+  0%|          | 0/545 [00:00<?, ?it/s] 12%|█▏        | 67/545 [00:00<00:00, 666.16it/s] 25%|██▍       | 134/545 [00:00<00:00, 663.75it/s] 37%|███▋      | 201/545 [00:00<00:00, 665.77it/s] 49%|████▉     | 268/545 [00:00<00:00, 666.72it/s] 61%|██████▏   | 335/545 [00:00<00:00, 666.50it/s] 74%|███████▍  | 402/545 [00:00<00:00, 666.62it/s] 86%|████████▌ | 469/545 [00:00<00:00, 667.09it/s] 98%|█████████▊| 536/545 [00:00<00:00, 666.60it/s]100%|██████████| 545/545 [00:00<00:00, 666.42it/s]
+  0%|          | 0/131 [00:00<?, ?it/s] 51%|█████     | 67/131 [00:00<00:00, 668.14it/s]100%|██████████| 131/131 [00:00<00:00, 666.90it/s]
+  0%|          | 0/612 [00:00<?, ?it/s] 11%|█         | 65/612 [00:00<00:00, 648.61it/s] 22%|██▏       | 132/612 [00:00<00:00, 660.62it/s] 33%|███▎      | 199/612 [00:00<00:00, 662.54it/s] 43%|████▎     | 266/612 [00:00<00:00, 665.16it/s] 54%|█████▍    | 333/612 [00:00<00:00, 665.05it/s] 65%|██████▌   | 400/612 [00:00<00:00, 664.97it/s] 76%|███████▋  | 467/612 [00:00<00:00, 666.00it/s] 87%|████████▋ | 534/612 [00:00<00:00, 666.19it/s] 98%|█████████▊| 601/612 [00:00<00:00, 666.30it/s]100%|██████████| 612/612 [00:00<00:00, 664.71it/s]
+  0%|          | 0/110 [00:00<?, ?it/s] 61%|██████    | 67/110 [00:00<00:00, 662.49it/s]100%|██████████| 110/110 [00:00<00:00, 663.25it/s]
+  0%|          | 0/245 [00:00<?, ?it/s] 27%|██▋       | 67/245 [00:00<00:00, 660.96it/s] 55%|█████▍    | 134/245 [00:00<00:00, 663.31it/s] 82%|████████▏ | 201/245 [00:00<00:00, 662.50it/s]100%|██████████| 245/245 [00:00<00:00, 662.92it/s]
+  0%|          | 0/201 [00:00<?, ?it/s] 33%|███▎      | 67/201 [00:00<00:00, 666.86it/s] 67%|██████▋   | 134/201 [00:00<00:00, 658.58it/s]100%|██████████| 201/201 [00:00<00:00, 661.71it/s]100%|██████████| 201/201 [00:00<00:00, 661.39it/s]
+  0%|          | 0/100 [00:00<?, ?it/s] 67%|██████▋   | 67/100 [00:00<00:00, 664.85it/s]100%|██████████| 100/100 [00:00<00:00, 665.93it/s]
+  0%|          | 0/126 [00:00<?, ?it/s] 53%|█████▎    | 67/126 [00:00<00:00, 665.78it/s]100%|██████████| 126/126 [00:00<00:00, 664.36it/s]
+  0%|          | 0/165 [00:00<?, ?it/s] 41%|████      | 67/165 [00:00<00:00, 664.89it/s] 81%|████████  | 134/165 [00:00<00:00, 666.94it/s]100%|██████████| 165/165 [00:00<00:00, 664.19it/s]
+  0%|          | 0/204 [00:00<?, ?it/s] 32%|███▏      | 66/204 [00:00<00:00, 657.08it/s] 65%|██████▍   | 132/204 [00:00<00:00, 658.43it/s] 97%|█████████▋| 198/204 [00:00<00:00, 657.61it/s]100%|██████████| 204/204 [00:00<00:00, 657.47it/s]
+  0%|          | 0/237 [00:00<?, ?it/s] 28%|██▊       | 66/237 [00:00<00:00, 657.09it/s] 56%|█████▌    | 132/237 [00:00<00:00, 657.25it/s] 84%|████████▎ | 198/237 [00:00<00:00, 658.36it/s]100%|██████████| 237/237 [00:00<00:00, 658.44it/s]
+  0%|          | 0/121 [00:00<?, ?it/s] 55%|█████▌    | 67/121 [00:00<00:00, 667.36it/s]100%|██████████| 121/121 [00:00<00:00, 642.04it/s]
+  0%|          | 0/108 [00:00<?, ?it/s] 61%|██████    | 66/108 [00:00<00:00, 658.62it/s]100%|██████████| 108/108 [00:00<00:00, 661.78it/s]
+  0%|          | 0/163 [00:00<?, ?it/s] 41%|████      | 67/163 [00:00<00:00, 662.45it/s] 82%|████████▏ | 134/163 [00:00<00:00, 663.60it/s]100%|██████████| 163/163 [00:00<00:00, 663.53it/s]
+  0%|          | 0/346 [00:00<?, ?it/s] 19%|█▉        | 67/346 [00:00<00:00, 668.44it/s] 39%|███▊      | 134/346 [00:00<00:00, 669.25it/s] 58%|█████▊    | 201/346 [00:00<00:00, 669.32it/s] 77%|███████▋  | 268/346 [00:00<00:00, 669.45it/s] 97%|█████████▋| 335/346 [00:00<00:00, 669.26it/s]100%|██████████| 346/346 [00:00<00:00, 668.68it/s]
+  0%|          | 0/895 [00:00<?, ?it/s]  7%|▋         | 67/895 [00:00<00:01, 665.12it/s] 15%|█▍        | 134/895 [00:00<00:01, 665.76it/s] 22%|██▏       | 201/895 [00:00<00:01, 667.02it/s] 30%|███       | 269/895 [00:00<00:00, 668.56it/s] 38%|███▊      | 336/895 [00:00<00:00, 667.41it/s] 45%|████▌     | 403/895 [00:00<00:00, 659.59it/s] 53%|█████▎    | 470/895 [00:00<00:00, 661.65it/s] 60%|██████    | 537/895 [00:00<00:00, 662.93it/s] 67%|██████▋   | 604/895 [00:00<00:00, 663.71it/s] 75%|███████▍  | 671/895 [00:01<00:00, 664.92it/s] 82%|████████▏ | 738/895 [00:01<00:00, 665.05it/s] 90%|████████▉ | 805/895 [00:01<00:00, 665.23it/s] 97%|█████████▋| 872/895 [00:01<00:00, 665.54it/s]100%|██████████| 895/895 [00:01<00:00, 664.54it/s]
+  0%|          | 0/311 [00:00<?, ?it/s] 22%|██▏       | 67/311 [00:00<00:00, 663.61it/s] 43%|████▎     | 134/311 [00:00<00:00, 665.14it/s] 65%|██████▍   | 201/311 [00:00<00:00, 665.81it/s] 86%|████████▌ | 268/311 [00:00<00:00, 666.16it/s]100%|██████████| 311/311 [00:00<00:00, 665.72it/s]
+  0%|          | 0/324 [00:00<?, ?it/s] 21%|██        | 67/324 [00:00<00:00, 663.61it/s] 41%|████▏     | 134/324 [00:00<00:00, 665.99it/s] 62%|██████▏   | 201/324 [00:00<00:00, 666.86it/s] 83%|████████▎ | 268/324 [00:00<00:00, 657.48it/s]100%|██████████| 324/324 [00:00<00:00, 662.04it/s]
+  0%|          | 0/1534 [00:00<?, ?it/s]  4%|▍         | 67/1534 [00:00<00:02, 662.18it/s]  9%|▊         | 134/1534 [00:00<00:02, 663.70it/s] 13%|█▎        | 201/1534 [00:00<00:02, 663.81it/s] 17%|█▋        | 268/1534 [00:00<00:01, 662.49it/s] 22%|██▏       | 335/1534 [00:00<00:01, 649.96it/s] 26%|██▌       | 402/1534 [00:00<00:01, 654.84it/s] 31%|███       | 469/1534 [00:00<00:01, 656.98it/s] 35%|███▍      | 536/1534 [00:00<00:01, 659.82it/s] 39%|███▉      | 603/1534 [00:00<00:01, 662.12it/s] 44%|████▎     | 670/1534 [00:01<00:01, 661.74it/s] 48%|████▊     | 737/1534 [00:01<00:01, 663.25it/s] 52%|█████▏    | 804/1534 [00:01<00:01, 663.24it/s] 57%|█████▋    | 871/1534 [00:01<00:00, 663.40it/s] 61%|██████    | 938/1534 [00:01<00:00, 653.22it/s] 66%|██████▌   | 1005/1534 [00:01<00:00, 656.22it/s] 70%|██████▉   | 1072/1534 [00:01<00:00, 658.60it/s] 74%|███████▍  | 1139/1534 [00:01<00:00, 657.18it/s] 79%|███████▊  | 1205/1534 [00:01<00:00, 657.53it/s] 83%|████████▎ | 1272/1534 [00:01<00:00, 658.81it/s] 87%|████████▋ | 1339/1534 [00:02<00:00, 659.59it/s] 92%|█████████▏| 1405/1534 [00:02<00:00, 658.49it/s] 96%|█████████▌| 1472/1534 [00:02<00:00, 660.37it/s]100%|██████████| 1534/1534 [00:02<00:00, 659.51it/s]
+  0%|          | 0/171 [00:00<?, ?it/s] 39%|███▉      | 67/171 [00:00<00:00, 661.55it/s] 78%|███████▊  | 134/171 [00:00<00:00, 665.58it/s]100%|██████████| 171/171 [00:00<00:00, 665.80it/s]
+W0706 18:38:40.147030 24799 /data/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py:719] Received Signals.SIGHUP death signal, shutting down workers
+W0706 18:38:40.149410 24799 /data/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py:900] Sending process 25164 closing signal SIGHUP
+Traceback (most recent call last):
+  File "/data/anaconda3/envs/llmcompressor/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 355, in wrapper
+    return f(*args, **kwargs)
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/run.py", line 892, in main
+    run(args)
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/run.py", line 883, in run
+    elastic_launch(
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 139, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 261, in launch_agent
+    result = agent.run()
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/metrics/api.py", line 138, in wrapper
+    result = f(*args, **kwargs)
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 711, in run
+    result = self._invoke_run(role)
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/agent/server/api.py", line 870, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/root/anaconda3/envs/llmcompressor/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 84, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 24799 got signal: 1
