@@ -12,8 +12,9 @@
 
 ### ICML2025
 
-| BoA: Attention-aware Post-training Quantization without Backpropagation |
+|                                                              |
 | ------------------------------------------------------------ |
+| BoA: Attention-aware Post-training Quantization without Backpropagation |
 | Efficient Generative Modeling with Residual Vector Quantization-Based Tokens |
 | Layer-wise Quantization for Quantized Optimistic Dual Averaging |
 | PARQ: Piecewise-Affine Regularized Quantization              |
@@ -31,8 +32,9 @@
 
 ### ICLR2025
 
-| When Attention Sink Emerges in Language Models: An Empirical View |
+|                                                              |
 | ------------------------------------------------------------ |
+| When Attention Sink Emerges in Language Models: An Empirical View |
 | SVDQuant: Absorbing Outliers by Low-Rank Component for 4-Bit Diffusion Models |
 | QERA: an Analytical Framework for Quantization Error Reconstruction |
 | OSTQuant: Refining Large Language Model Quantization with Orthogonal and Scaling Transformations for Better Distribution Fitting |
@@ -41,8 +43,9 @@
 
 ### ACM2025
 
-| MicroScopiQ: Accelerating Foundational Models through Outlier-Aware Microscaling Quantization |
+|                                                              |
 | ------------------------------------------------------------ |
+| MicroScopiQ: Accelerating Foundational Models through Outlier-Aware Microscaling Quantization |
 | Colour quantisation using self-organizing migrating algorithm |
 | Optimize Quantization for Large Language Models via Progressive Training |
 | NeuronQuant: Accurate and Efficient Post-Training Quantization for Spiking Neural Networks |
@@ -58,8 +61,9 @@
 
 ### MIT HAN Lab
 
-| Qserve: W4a8kv4 quantization and system co-design for efficient llm serving |
+|                                                              |
 | ------------------------------------------------------------ |
+| Qserve: W4a8kv4 quantization and system co-design for efficient llm serving |
 | SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models |
 | AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration |
 | SVDQuant: Absorbing Outliers by Low-Rank Components for 4-Bit Diffusion Models |
