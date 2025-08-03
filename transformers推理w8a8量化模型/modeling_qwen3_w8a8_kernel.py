@@ -54,7 +54,7 @@ import sgl_kernel
 from sglang.srt.layers.quantization.int8_kernel import per_token_quant_int8
 from sgl_kernel import int8_scaled_mm
 
-from sageattention import sageattn
+# from sageattention import sageattn
 
 
 # ==========================================================================================
@@ -275,18 +275,6 @@ class Qwen3Attention(nn.Module):
         key_states = self.k_norm(self.k_proj(hidden_states).view(hidden_shape)).transpose(1, 2)
         value_states = self.v_proj(hidden_states).view(hidden_shape).transpose(1, 2)
 
-        # attn_output, attn_weights = attention_interface(
-        #     self,
-        #     query_states,
-        #     key_states,
-        #     value_states,
-        #     attention_mask,
-        #     dropout=0.0 if not self.training else self.attention_dropout,
-        #     scaling=self.scaling,
-        #     sliding_window=self.sliding_window,
-        #     **kwargs,
-        # )
-
         cos, sin = position_embeddings
         query_states, key_states = apply_rotary_pos_emb(query_states, key_states, cos, sin)
 
@@ -299,20 +287,6 @@ class Qwen3Attention(nn.Module):
             # print(ALL_ATTENTION_FUNCTIONS)
             attention_interface = ALL_ATTENTION_FUNCTIONS[self.config._attn_implementation]
 
-        attn_weights = None
-        # print(query_states.shape, key_states.shape, value_states.shape)
-
-        # q_seq_len = query_states.shape[2]
-        # if q_seq_len != 1:
-        #     # key_states = repeat_kv(key_states, self.num_key_value_groups)
-        #     # value_states = repeat_kv(value_states, self.num_key_value_groups)
-        #     attn_output = sageattn(query_states,
-        #                            key_states,
-        #                            value_states,
-        #                            tensor_layout="HND",
-        #                            is_causal=True,
-        #                            smooth_k=True)
-        # else:
         attn_output, attn_weights = attention_interface(
             self,
             query_states,
@@ -324,13 +298,6 @@ class Qwen3Attention(nn.Module):
             sliding_window=self.sliding_window,
             **kwargs,
         )
-        #
-        # attn_output = sageattn(query_states,
-        #                        key_states,
-        #                        value_states,
-        #                        tensor_layout="HND",
-        #                        is_causal=True,
-        #                        smooth_k=True)
 
         attn_output = attn_output.reshape(*input_shape, -1).contiguous()
         attn_output = self.o_proj(attn_output)
@@ -425,50 +392,50 @@ class Qwen3SageAttention(Qwen3Attention):
 
 # [ ... The rest of the model file remains the same ... ]
 # The following code is identical to the previous version and is provided for completeness.
-class Qwen3DecoderLayer(GradientCheckpointingLayer):
-    def __init__(self, config: Qwen3Config, layer_idx: int):
-        super().__init__()
-        self.hidden_size = config.hidden_size
-        self.self_attn = Qwen3Attention(config=config, layer_idx=layer_idx)
-        self.mlp = Qwen3MLP(config)
-        self.input_layernorm = Qwen3RMSNorm(config.hidden_size, eps=config.rms_norm_eps)
-        self.post_attention_layernorm = Qwen3RMSNorm(config.hidden_size, eps=config.rms_norm_eps)
-        self.attention_type = config.layer_types[layer_idx]
-
-    def forward(
-            self,
-            hidden_states: torch.Tensor,
-            attention_mask: Optional[torch.Tensor] = None,
-            position_ids: Optional[torch.LongTensor] = None,
-            past_key_value: Optional[Cache] = None,
-            output_attentions: Optional[bool] = False,
-            use_cache: Optional[bool] = False,
-            cache_position: Optional[torch.LongTensor] = None,
-            position_embeddings: Optional[tuple[torch.Tensor, torch.Tensor]] = None,
-            **kwargs: Unpack[FlashAttentionKwargs],
-    ) -> tuple[torch.FloatTensor, Optional[tuple[torch.FloatTensor, torch.FloatTensor]]]:
-        residual = hidden_states
-        hidden_states = self.input_layernorm(hidden_states)
-        hidden_states, self_attn_weights = self.self_attn(
-            hidden_states=hidden_states,
-            attention_mask=attention_mask,
-            position_ids=position_ids,
-            past_key_value=past_key_value,
-            output_attentions=output_attentions,
-            use_cache=use_cache,
-            cache_position=cache_position,
-            position_embeddings=position_embeddings,
-            **kwargs,
-        )
-        hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states = self.post_attention_layernorm(hidden_states)
-        hidden_states = self.mlp(hidden_states)
-        hidden_states = residual + hidden_states
-        outputs = (hidden_states,)
-        if output_attentions:
-            outputs += (self_attn_weights,)
-        return outputs
+# class Qwen3DecoderLayer(GradientCheckpointingLayer):
+#     def __init__(self, config: Qwen3Config, layer_idx: int):
+#         super().__init__()
+#         self.hidden_size = config.hidden_size
+#         self.self_attn = Qwen3Attention(config=config, layer_idx=layer_idx)
+#         self.mlp = Qwen3MLP(config)
+#         self.input_layernorm = Qwen3RMSNorm(config.hidden_size, eps=config.rms_norm_eps)
+#         self.post_attention_layernorm = Qwen3RMSNorm(config.hidden_size, eps=config.rms_norm_eps)
+#         self.attention_type = config.layer_types[layer_idx]
+#
+#     def forward(
+#             self,
+#             hidden_states: torch.Tensor,
+#             attention_mask: Optional[torch.Tensor] = None,
+#             position_ids: Optional[torch.LongTensor] = None,
+#             past_key_value: Optional[Cache] = None,
+#             output_attentions: Optional[bool] = False,
+#             use_cache: Optional[bool] = False,
+#             cache_position: Optional[torch.LongTensor] = None,
+#             position_embeddings: Optional[tuple[torch.Tensor, torch.Tensor]] = None,
+#             **kwargs: Unpack[FlashAttentionKwargs],
+#     ) -> tuple[torch.FloatTensor, Optional[tuple[torch.FloatTensor, torch.FloatTensor]]]:
+#         residual = hidden_states
+#         hidden_states = self.input_layernorm(hidden_states)
+#         hidden_states, self_attn_weights = self.self_attn(
+#             hidden_states=hidden_states,
+#             attention_mask=attention_mask,
+#             position_ids=position_ids,
+#             past_key_value=past_key_value,
+#             output_attentions=output_attentions,
+#             use_cache=use_cache,
+#             cache_position=cache_position,
+#             position_embeddings=position_embeddings,
+#             **kwargs,
+#         )
+#         hidden_states = residual + hidden_states
+#         residual = hidden_states
+#         hidden_states = self.post_attention_layernorm(hidden_states)
+#         hidden_states = self.mlp(hidden_states)
+#         hidden_states = residual + hidden_states
+#         outputs = (hidden_states,)
+#         if output_attentions:
+#             outputs += (self_attn_weights,)
+#         return outputs
 
 
 @auto_docstring
