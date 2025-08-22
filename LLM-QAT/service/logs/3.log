@@ -1,0 +1,312 @@
+nohup: ignoring input
+INFO 08-18 10:47:15 [__init__.py:235] Automatically detected platform cuda.
+INFO 08-18 10:47:20 [api_server.py:1755] vLLM API server version 0.10.0
+INFO 08-18 10:47:20 [cli_args.py:261] non-default args: {'model_tag': '/home/gongoubo/project/LLM-QAT/model_hub/Qwen/Qwen3-4B/models/qwen3-4B-quant-finetuned-qat-rtn-w8a8/vllm_quant_model', 'host': '0.0.0.0', 'port': 11777, 'model': '/home/gongoubo/project/LLM-QAT/model_hub/Qwen/Qwen3-4B/models/qwen3-4B-quant-finetuned-qat-rtn-w8a8/vllm_quant_model', 'max_model_len': 34000, 'served_model_name': ['Qwen3-4B-quant-w8a8']}
+INFO 08-18 10:47:31 [config.py:3440] Downcasting torch.float32 to torch.bfloat16.
+INFO 08-18 10:47:31 [config.py:1604] Using max model len 34000
+INFO 08-18 10:47:31 [config.py:2434] Chunked prefill is enabled with max_num_batched_tokens=2048.
+/opt/conda/lib/python3.11/site-packages/compressed_tensors/quantization/quant_args.py:301: UserWarning: No observer is used for dynamic quantization, setting to None
+  warnings.warn(
+INFO 08-18 10:47:39 [__init__.py:235] Automatically detected platform cuda.
+INFO 08-18 10:47:42 [core.py:572] Waiting for init message from front-end.
+INFO 08-18 10:47:42 [core.py:71] Initializing a V1 LLM engine (v0.10.0) with config: model='/home/gongoubo/project/LLM-QAT/model_hub/Qwen/Qwen3-4B/models/qwen3-4B-quant-finetuned-qat-rtn-w8a8/vllm_quant_model', speculative_config=None, tokenizer='/home/gongoubo/project/LLM-QAT/model_hub/Qwen/Qwen3-4B/models/qwen3-4B-quant-finetuned-qat-rtn-w8a8/vllm_quant_model', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config={}, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=34000, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=compressed-tensors, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=Qwen3-4B-quant-w8a8, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"max_capture_size":512,"local_cache_dir":null}
+INFO 08-18 10:47:44 [parallel_state.py:1102] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 08-18 10:47:44 [topk_topp_sampler.py:59] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 08-18 10:47:44 [gpu_model_runner.py:1843] Starting to load model /home/gongoubo/project/LLM-QAT/model_hub/Qwen/Qwen3-4B/models/qwen3-4B-quant-finetuned-qat-rtn-w8a8/vllm_quant_model...
+INFO 08-18 10:47:45 [gpu_model_runner.py:1875] Loading model from scratch...
+INFO 08-18 10:47:45 [compressed_tensors_w8a8_int8.py:52] Using CutlassScaledMMLinearKernel for CompressedTensorsW8A8Int8
+INFO 08-18 10:47:45 [cuda.py:290] Using Flash Attention backend on V1 engine.
+Loading safetensors checkpoint shards:   0% Completed | 0/2 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  50% Completed | 1/2 [00:00<00:00,  1.01it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  2.06it/s]
+Loading safetensors checkpoint shards: 100% Completed | 2/2 [00:01<00:00,  1.78it/s]
+
+INFO 08-18 10:47:46 [default_loader.py:262] Loading weights took 1.13 seconds
+INFO 08-18 10:47:47 [gpu_model_runner.py:1892] Model loading took 4.1833 GiB and 1.437144 seconds
+INFO 08-18 10:48:00 [backends.py:530] Using cache directory: /root/.cache/vllm/torch_compile_cache/9218c42eb7/rank_0_0/backbone for vLLM's torch.compile
+INFO 08-18 10:48:00 [backends.py:541] Dynamo bytecode transform time: 12.75 s
+INFO 08-18 10:48:08 [backends.py:194] Cache the graph for dynamic shape for later use
+INFO 08-18 10:48:53 [backends.py:215] Compiling a graph for dynamic shape takes 52.26 s
+ERROR 08-18 10:48:55 [core.py:632] EngineCore failed to start.
+ERROR 08-18 10:48:55 [core.py:632] Traceback (most recent call last):
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 623, in run_engine_core
+ERROR 08-18 10:48:55 [core.py:632]     engine_core = EngineCoreProc(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 441, in __init__
+ERROR 08-18 10:48:55 [core.py:632]     super().__init__(vllm_config, executor_class, log_stats,
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 86, in __init__
+ERROR 08-18 10:48:55 [core.py:632]     self._initialize_kv_caches(vllm_config)
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 158, in _initialize_kv_caches
+ERROR 08-18 10:48:55 [core.py:632]     self.model_executor.determine_available_memory())
+ERROR 08-18 10:48:55 [core.py:632]     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/executor/abstract.py", line 76, in determine_available_memory
+ERROR 08-18 10:48:55 [core.py:632]     output = self.collective_rpc("determine_available_memory")
+ERROR 08-18 10:48:55 [core.py:632]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/executor/uniproc_executor.py", line 58, in collective_rpc
+ERROR 08-18 10:48:55 [core.py:632]     answer = run_method(self.driver_worker, method, args, kwargs)
+ERROR 08-18 10:48:55 [core.py:632]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/utils/__init__.py", line 2985, in run_method
+ERROR 08-18 10:48:55 [core.py:632]     return func(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+ERROR 08-18 10:48:55 [core.py:632]     return func(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/worker/gpu_worker.py", line 233, in determine_available_memory
+ERROR 08-18 10:48:55 [core.py:632]     self.model_runner.profile_run()
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/worker/gpu_model_runner.py", line 2416, in profile_run
+ERROR 08-18 10:48:55 [core.py:632]     = self._dummy_run(self.max_num_tokens, is_profile=True)
+ERROR 08-18 10:48:55 [core.py:632]       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+ERROR 08-18 10:48:55 [core.py:632]     return func(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/v1/worker/gpu_model_runner.py", line 2168, in _dummy_run
+ERROR 08-18 10:48:55 [core.py:632]     outputs = model(
+ERROR 08-18 10:48:55 [core.py:632]               ^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+ERROR 08-18 10:48:55 [core.py:632]     return self._call_impl(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+ERROR 08-18 10:48:55 [core.py:632]     return forward_call(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/model_executor/models/qwen3.py", line 301, in forward
+ERROR 08-18 10:48:55 [core.py:632]     hidden_states = self.model(input_ids, positions, intermediate_tensors,
+ERROR 08-18 10:48:55 [core.py:632]                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/compilation/decorators.py", line 272, in __call__
+ERROR 08-18 10:48:55 [core.py:632]     output = self.compiled_callable(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 655, in _fn
+ERROR 08-18 10:48:55 [core.py:632]     return fn(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 336, in forward
+ERROR 08-18 10:48:55 [core.py:632]     def forward(
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+ERROR 08-18 10:48:55 [core.py:632]     return self._call_impl(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+ERROR 08-18 10:48:55 [core.py:632]     return forward_call(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+ERROR 08-18 10:48:55 [core.py:632]     return fn(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/fx/graph_module.py", line 830, in call_wrapped
+ERROR 08-18 10:48:55 [core.py:632]     return self._wrapped_call(self, *args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/fx/graph_module.py", line 406, in __call__
+ERROR 08-18 10:48:55 [core.py:632]     raise e
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/fx/graph_module.py", line 393, in __call__
+ERROR 08-18 10:48:55 [core.py:632]     return super(self.cls, obj).__call__(*args, **kwargs)  # type: ignore[misc]
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+ERROR 08-18 10:48:55 [core.py:632]     return self._call_impl(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+ERROR 08-18 10:48:55 [core.py:632]     return forward_call(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "<eval_with_key>.74", line 442, in forward
+ERROR 08-18 10:48:55 [core.py:632]     submod_0 = self.submod_0(l_input_ids_, s0, l_self_modules_embed_tokens_parameters_weight_, l_self_modules_layers_modules_0_modules_input_layernorm_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_scale_, l_self_modules_layers_modules_0_modules_self_attn_modules_q_norm_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_k_norm_parameters_weight_, l_positions_, l_self_modules_layers_modules_0_modules_self_attn_modules_rotary_emb_buffers_cos_sin_cache_);  l_input_ids_ = l_self_modules_embed_tokens_parameters_weight_ = l_self_modules_layers_modules_0_modules_input_layernorm_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_scale_ = l_self_modules_layers_modules_0_modules_self_attn_modules_q_norm_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_k_norm_parameters_weight_ = None
+ERROR 08-18 10:48:55 [core.py:632]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/vllm/compilation/cuda_piecewise_backend.py", line 112, in __call__
+ERROR 08-18 10:48:55 [core.py:632]     return self.compiled_graph_for_general_shape(*args)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+ERROR 08-18 10:48:55 [core.py:632]     return fn(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/aot_autograd.py", line 1209, in forward
+ERROR 08-18 10:48:55 [core.py:632]     return compiled_fn(full_args)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 328, in runtime_wrapper
+ERROR 08-18 10:48:55 [core.py:632]     all_outs = call_func_at_runtime_with_args(
+ERROR 08-18 10:48:55 [core.py:632]                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+ERROR 08-18 10:48:55 [core.py:632]     out = normalize_as_list(f(args))
+ERROR 08-18 10:48:55 [core.py:632]                             ^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 689, in inner_fn
+ERROR 08-18 10:48:55 [core.py:632]     outs = compiled_fn(args)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 495, in wrapper
+ERROR 08-18 10:48:55 [core.py:632]     return compiled_fn(runtime_args)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_inductor/output_code.py", line 460, in __call__
+ERROR 08-18 10:48:55 [core.py:632]     return self.current_callable(inputs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_inductor/utils.py", line 2404, in run
+ERROR 08-18 10:48:55 [core.py:632]     return model(new_inputs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632]   File "/root/.cache/vllm/torch_compile_cache/9218c42eb7/rank_0_0/inductor_cache/ih/cihgojdmnd36n4hvynm3rbl2nbjtb6wm7rgluaxe5ijpe6ukhghr.py", line 474, in call
+ERROR 08-18 10:48:55 [core.py:632]     torch.ops._C.cutlass_scaled_mm.default(buf8, buf0, arg4_1, buf3, arg5_1, None)
+ERROR 08-18 10:48:55 [core.py:632]   File "/opt/conda/lib/python3.11/site-packages/torch/_ops.py", line 756, in __call__
+ERROR 08-18 10:48:55 [core.py:632]     return self._op(*args, **kwargs)
+ERROR 08-18 10:48:55 [core.py:632]            ^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 08-18 10:48:55 [core.py:632] RuntimeError: Currently, only fp8 gemm is implemented for Blackwell
+Process EngineCore_0:
+Traceback (most recent call last):
+  File "/opt/conda/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/opt/conda/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 636, in run_engine_core
+    raise e
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 623, in run_engine_core
+    engine_core = EngineCoreProc(*args, **kwargs)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 441, in __init__
+    super().__init__(vllm_config, executor_class, log_stats,
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 86, in __init__
+    self._initialize_kv_caches(vllm_config)
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core.py", line 158, in _initialize_kv_caches
+    self.model_executor.determine_available_memory())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/executor/abstract.py", line 76, in determine_available_memory
+    output = self.collective_rpc("determine_available_memory")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/executor/uniproc_executor.py", line 58, in collective_rpc
+    answer = run_method(self.driver_worker, method, args, kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/utils/__init__.py", line 2985, in run_method
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/worker/gpu_worker.py", line 233, in determine_available_memory
+    self.model_runner.profile_run()
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/worker/gpu_model_runner.py", line 2416, in profile_run
+    = self._dummy_run(self.max_num_tokens, is_profile=True)
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/worker/gpu_model_runner.py", line 2168, in _dummy_run
+    outputs = model(
+              ^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/model_executor/models/qwen3.py", line 301, in forward
+    hidden_states = self.model(input_ids, positions, intermediate_tensors,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/compilation/decorators.py", line 272, in __call__
+    output = self.compiled_callable(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 655, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/model_executor/models/qwen2.py", line 336, in forward
+    def forward(
+  File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/fx/graph_module.py", line 830, in call_wrapped
+    return self._wrapped_call(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/fx/graph_module.py", line 406, in __call__
+    raise e
+  File "/opt/conda/lib/python3.11/site-packages/torch/fx/graph_module.py", line 393, in __call__
+    return super(self.cls, obj).__call__(*args, **kwargs)  # type: ignore[misc]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<eval_with_key>.74", line 442, in forward
+    submod_0 = self.submod_0(l_input_ids_, s0, l_self_modules_embed_tokens_parameters_weight_, l_self_modules_layers_modules_0_modules_input_layernorm_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_scale_, l_self_modules_layers_modules_0_modules_self_attn_modules_q_norm_parameters_weight_, l_self_modules_layers_modules_0_modules_self_attn_modules_k_norm_parameters_weight_, l_positions_, l_self_modules_layers_modules_0_modules_self_attn_modules_rotary_emb_buffers_cos_sin_cache_);  l_input_ids_ = l_self_modules_embed_tokens_parameters_weight_ = l_self_modules_layers_modules_0_modules_input_layernorm_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_qkv_proj_parameters_weight_scale_ = l_self_modules_layers_modules_0_modules_self_attn_modules_q_norm_parameters_weight_ = l_self_modules_layers_modules_0_modules_self_attn_modules_k_norm_parameters_weight_ = None
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/compilation/cuda_piecewise_backend.py", line 112, in __call__
+    return self.compiled_graph_for_general_shape(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py", line 838, in _fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/aot_autograd.py", line 1209, in forward
+    return compiled_fn(full_args)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 328, in runtime_wrapper
+    all_outs = call_func_at_runtime_with_args(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/utils.py", line 126, in call_func_at_runtime_with_args
+    out = normalize_as_list(f(args))
+                            ^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 689, in inner_fn
+    outs = compiled_fn(args)
+           ^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 495, in wrapper
+    return compiled_fn(runtime_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_inductor/output_code.py", line 460, in __call__
+    return self.current_callable(inputs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/torch/_inductor/utils.py", line 2404, in run
+    return model(new_inputs)
+           ^^^^^^^^^^^^^^^^^
+  File "/root/.cache/vllm/torch_compile_cache/9218c42eb7/rank_0_0/inductor_cache/ih/cihgojdmnd36n4hvynm3rbl2nbjtb6wm7rgluaxe5ijpe6ukhghr.py", line 474, in call
+    torch.ops._C.cutlass_scaled_mm.default(buf8, buf0, arg4_1, buf3, arg5_1, None)
+  File "/opt/conda/lib/python3.11/site-packages/torch/_ops.py", line 756, in __call__
+    return self._op(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Currently, only fp8 gemm is implemented for Blackwell
+[rank0]:[W818 10:48:57.226342172 ProcessGroupNCCL.cpp:1479] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+Traceback (most recent call last):
+  File "/opt/conda/bin/vllm", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/entrypoints/cli/main.py", line 54, in main
+    args.dispatch_function(args)
+  File "/opt/conda/lib/python3.11/site-packages/vllm/entrypoints/cli/serve.py", line 52, in cmd
+    uvloop.run(run_server(args))
+  File "/opt/conda/lib/python3.11/site-packages/uvloop/__init__.py", line 105, in run
+    return runner.run(wrapper())
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "uvloop/loop.pyx", line 1518, in uvloop.loop.Loop.run_until_complete
+  File "/opt/conda/lib/python3.11/site-packages/uvloop/__init__.py", line 61, in wrapper
+    return await main
+           ^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 1791, in run_server
+    await run_server_worker(listen_address, sock, args, **uvicorn_kwargs)
+  File "/opt/conda/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 1811, in run_server_worker
+    async with build_async_engine_client(args, client_config) as engine_client:
+  File "/opt/conda/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 158, in build_async_engine_client
+    async with build_async_engine_client_from_engine_args(
+  File "/opt/conda/lib/python3.11/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/entrypoints/openai/api_server.py", line 194, in build_async_engine_client_from_engine_args
+    async_llm = AsyncLLM.from_vllm_config(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/async_llm.py", line 163, in from_vllm_config
+    return cls(
+           ^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/async_llm.py", line 117, in __init__
+    self.engine_core = EngineCoreClient.make_async_mp_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 98, in make_async_mp_client
+    return AsyncMPClient(*client_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 677, in __init__
+    super().__init__(
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/core_client.py", line 408, in __init__
+    with launch_core_engines(vllm_config, executor_class,
+  File "/opt/conda/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/utils.py", line 697, in launch_core_engines
+    wait_for_engine_startup(
+  File "/opt/conda/lib/python3.11/site-packages/vllm/v1/engine/utils.py", line 750, in wait_for_engine_startup
+    raise RuntimeError("Engine core initialization failed. "
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+vllm_service.sh: line 12: .0: command not found
