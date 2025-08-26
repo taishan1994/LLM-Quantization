@@ -2,7 +2,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig
 
 # from modeling_qwen3 import Qwen3ForCausalLM
-from eval_utils.modeling_qwen2 import Qwen2ForCausalLM
+from modeling_qwen2 import Qwen2ForCausalLM
 
 # 1. 准备模型和分词器
 model_name = "/data/gongoubo/checkpoints/Qwen/Qwen3-0.6B"
