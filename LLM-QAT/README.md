@@ -1,7 +1,5 @@
 # LLM-QAT
 
-# **LLM-QAT**
-
 ![img](./README.assets/743ae508-6547-46e9-8c64-00356d0a6d46.png)
 
 使用Qwen3-4B进行QAT。
