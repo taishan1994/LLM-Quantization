@@ -7,4 +7,5 @@ python quant.py --model /home/gongoubo/checkpoints/Qwen/Qwen3-4B --num_gpus 8 --
 ```shell
 python eval.py
 ```
+`pip install evalscope[opencompass]==0.17.1`
 注意这里面可能需要根据实际情况修改调用api的端口，里面是用了4个port，根据实际起的实例进行修改。
