@@ -1,0 +1,19 @@
+base:
+    seed: &seed 42
+model:
+    type: Qwen2
+    path: /data/gongoubo/checkpoints/Qwen/Qwen3-4B
+    torch_dtype: auto
+quant:
+    method: Quarot
+    weight:
+        bit: 4
+        symmetric: True
+        granularity: per_channel
+    special:
+        rotate_mode: hadamard
+        fp32_had: True
+        online_rotate: False
+save:
+    save_autoawq: True
+    save_path: /data/gongoubo/checkpoints/Qwen/Qwen3-4B-quarot-sym-w4a16

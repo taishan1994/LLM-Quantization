@@ -1,0 +1,35 @@
+base:
+    seed: &seed 42
+model:
+    type: DeepseekV3
+    path: model_path
+    tokenizer_mode: fast
+    torch_dtype: torch.float8_e4m3fn
+calib:
+    name: pileval
+    download: False
+    path: calib data path
+    n_samples: 128
+    bs: -1
+    seq_len: 512
+    preproc: pileval_awq
+    seed: *seed
+quant:
+    method: Awq
+    weight:
+        bit: 4
+        symmetric: True
+        granularity: per_group
+        group_size: 128
+    special:
+        trans: True
+        # The options for "trans_version" include "v1" and "v2".
+        # But their results don't differ significantly.
+        trans_version: v2
+        # DeepseekV3/R1 not support weight_clip now
+        weight_clip: False
+        # For 2-bit quantization, setting "clip_sym: False" will yield better results.
+        save_mem: False
+save:
+    save_vllm: True
+    save_path: /path/to/save/

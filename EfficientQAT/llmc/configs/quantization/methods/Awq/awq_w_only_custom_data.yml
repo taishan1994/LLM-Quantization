@@ -1,0 +1,63 @@
+base:
+    seed: &seed 42
+model:
+    type: model_type
+    path: model path
+    tokenizer_mode: slow
+    torch_dtype: auto
+calib:
+    name: custom_txt
+    download: False
+    path: calib data path
+    apply_chat_template: True
+    n_samples: 128
+    seq_len: 512
+    bs: -1
+    preproc: random_truncate_txt
+    seed: *seed
+eval:
+    - eval_pos: [pretrain, transformed, fake_quant]
+      name: custom_gen
+      type: generate_only
+      max_new_tokens: 32
+      bs: 1
+      download: False
+      path: /data/yongyang/datasets/general_custom_data
+      apply_chat_template: True
+      inference_per_block: False
+    - eval_pos: [pretrain, transformed, fake_quant]
+      name: wikitext2
+      type: token_acc
+      download: False
+      path: /data/yongyang/datasets/llmc/eval/wikitext2
+      seq_len: 2048
+      # For 7B / 13B model eval, bs can be set to "1", and inference_per_block can be set to "False".
+      # For 70B model eval, bs can be set to "20", and inference_per_block can be set to "True".
+      bs: 1
+      inference_per_block: False
+    - eval_pos: [pretrain, transformed, fake_quant]
+      name: wikitext2
+      download: False
+      path: /data/yongyang/datasets/llmc/eval/wikitext2
+      seq_len: 2048
+      # For 7B / 13B model eval, bs can be set to "1", and inference_per_block can be set to "False".
+      # For 70B model eval, bs can be set to "20", and inference_per_block can be set to "True".
+      bs: 1
+      inference_per_block: False
+quant:
+    method: Awq
+    weight:
+        bit: 4
+        symmetric: False
+        granularity: per_group
+        group_size: 128
+    special:
+        trans: True
+        # The options for "trans_version" include "v1" and "v2".
+        trans_version: v2
+        weight_clip: True
+        clip_sym: True
+save:
+    save_trans: False
+    save_fake: False
+    save_path: /path/to/save/

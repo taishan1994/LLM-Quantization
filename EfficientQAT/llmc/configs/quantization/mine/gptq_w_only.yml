@@ -1,0 +1,34 @@
+base:
+    seed: &seed 0
+model:
+    type: Qwen2
+    path: /data/gongoubo/checkpoints/Qwen/Qwen3-4B
+    torch_dtype: auto
+calib:
+    name: wikitext2
+    download: True
+    n_samples: 256
+    path: calib data path
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: *seed
+quant:
+    method: GPTQ
+    weight:
+        bit: 4
+        symmetric: False
+        granularity: per_group
+        group_size: 128
+        # calib_algo: mse
+        # mse_b_num: 2
+    special:
+        actorder: True
+        static_groups: False
+        percdamp: 0.01
+        blocksize: 128
+        true_sequential: True
+    quant_out: True
+save:
+    save_autoawq: True
+    save_path: /data/gongoubo/checkpoints/Qwen/Qwen3-4B-gptq-w4a16

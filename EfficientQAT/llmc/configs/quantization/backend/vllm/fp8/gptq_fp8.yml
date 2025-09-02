@@ -1,0 +1,52 @@
+base:
+    seed: &seed 42
+model:
+    type: model_type
+    path: model path
+    tokenizer_mode: slow
+    torch_dtype: auto
+calib:
+    name: wikitext2
+    download: False
+    n_samples: 128
+    path: calib data path
+    bs: 1
+    seq_len: 2048
+    preproc: wikitext2_gptq
+    seed: *seed
+eval:
+    eval_pos: [fake-quant]
+    name: wikitext2
+    download: False
+    path: eval data path
+    seq_len: 2048
+    # For 7B / 13B model eval, bs can be set to "1", and inference_per_block can be set to "False".
+    # For 70B model eval, bs can be set to "20", and inference_per_block can be set to "True".
+    bs: 1
+    inference_per_block: False
+quant:
+    method: GPTQ
+    weight:
+        quant_type: float-quant
+        # Support ["e4m3", "e5m2"]
+        bit: e4m3
+        symmetric: True
+        granularity: per_channel
+        use_qtorch: True
+    act:
+        quant_type: float-quant
+        # Support ["e4m3", "e5m2"]
+        bit: e4m3
+        symmetric: True
+        granularity: per_token
+        use_qtorch: True
+    special:
+        actorder: True
+        static_groups: False
+        percdamp: 0.01
+        blocksize: 128
+        true_sequential: True
+    quant_out: True
+save:
+    save_sgl: True
+    save_path: /path/to/save_for_vllm_gptq_fp8/
