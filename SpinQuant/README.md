@@ -18,7 +18,7 @@ This repository contains the code of SpinQuant introduced: "[SpinQuant: LLM Quan
 Step 1: 优化旋转矩阵
 
 ```shell
-bash 10_optimize_rotation_qwen3.sh
+bash scripts/10_optimize_rotation_qwen3.sh
 
 CUDA_VISIBLE_DEVICES=0 torchrun --nnodes=1 --nproc_per_node=1 optimize_rotation.py \
 --input_model "/data/gongoubo/checkpoints/Qwen/Qwen3-0___6B"  \
@@ -53,7 +53,7 @@ CUDA_VISIBLE_DEVICES=0 torchrun --nnodes=1 --nproc_per_node=1 optimize_rotation.
 Step 2: 使用GPTQ量化并评估
 
 ```shell
-bash 2_eval_ptq_qwen3.sh
+bash scripts/2_eval_ptq_qwen3.sh
 
 torchrun --nnodes=1 --nproc_per_node=1 ptq.py \
 --input_model "/data/gongoubo/checkpoints/Qwen/Qwen3-0___6B" \
