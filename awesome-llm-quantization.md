@@ -9,6 +9,11 @@
 
 # 论文
 
+## 最新论文
+|                                                              | | |
+| ---- | ---- | ---- |
+| [ BUTTERFLYQUANT: ULTRA-LOW-BIT LLM QUANTI ZATION THROUGH LEARNABLE ORTHOGONAL BUT TERFLY TRANSFORMS]()https://arxiv.org/pdf/2509.09679 | 2025-09 | arxiv |
+
 ## 按照会议划分
 
 ### ICML2025
