@@ -3,6 +3,9 @@
 -  [Low-bit Model Quantization for Deep Neural Networks: A Survey]([2505.05530](https://arxiv.org/pdf/2505.05530))
 - Addressing Activation Outliers in LLMs: A Systematic Review of Post-Training Quantization Techniques
 - (Art and Science of Quantizing Large-Scale Models:A Comprehensive Overview)[https://arxiv.org/pdf/2409.11650]
+- [A Comprehensive Evaluation on QuantizationTechniques for Large Language Models](https://arxiv.org/pdf/2507.17417)
+<img width="1019" height="637" alt="image" src="https://github.com/user-attachments/assets/7d6b8ef7-4e69-41e9-b6eb-41018f3b120b" />
+
 - 另外的一张图，忘了从哪里获取到的了：
 
 ![image-20250715170043437](./awesome-llm-quantization.assets/image-20250715170043437.png)
