@@ -16,6 +16,8 @@
 |                                                              | | |
 | ---- | ---- | ---- |
 | [ BUTTERFLYQUANT: ULTRA-LOW-BIT LLM QUANTI ZATION THROUGH LEARNABLE ORTHOGONAL BUT TERFLY TRANSFORMS](https://arxiv.org/pdf/2509.09679) | 2025-09 | arxiv |
+| [DartQuant: Efficient Rotational Distribution Calibration for LLM Quantization](https://arxiv.org/pdf/2511.04063) | 2025-11 | arxiv |
+| [Block Rotation is All You Need for MXFP4 Quantization](https://arxiv.org/pdf/2511.04214) | 2025-11 | arxiv |
 
 ## 按照会议划分
 
