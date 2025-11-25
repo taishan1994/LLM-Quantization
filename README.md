@@ -16,3 +16,5 @@
 - [quarot旋转的最佳实践](http://mp.weixin.qq.com/s?__biz=MzkyMDE3MDEwMw==&mid=2247484866&idx=2&sn=49f815806891a2f1c6ff6d7f52aa3d64&chksm=c042936e5cd54d8ebf9809ca5422703520b9fe4ace6b542ac76ddfa06ade7dda495818bdd5ad&scene=126&sessionid=1752561818#rd)
 - [sageattention3和gpt-oss使用的mxfp4是什么？](https://mp.weixin.qq.com/s/WVwxCDy8uQ6RarA3olveVQ)
 - [LLM中使用sageattention](https://mp.weixin.qq.com/s/V7dtPpOubFN1ZTvoRQRk2g)
+- [为什么Qwen3-VL不能像Qwen3一样使用quarot旋转变换？](https://mp.weixin.qq.com/s/hQxb45QghIMN4fiZrI1Jew)
+- [对gpt_oss模型进行quarot旋转变换](https://mp.weixin.qq.com/s/jN1QNP0By9zz4df_96ZmRg)
