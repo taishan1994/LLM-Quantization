@@ -18,3 +18,6 @@
 - [LLM中使用sageattention](https://mp.weixin.qq.com/s/V7dtPpOubFN1ZTvoRQRk2g)
 - [为什么Qwen3-VL不能像Qwen3一样使用quarot旋转变换？](https://mp.weixin.qq.com/s/hQxb45QghIMN4fiZrI1Jew)
 - [对gpt_oss模型进行quarot旋转变换](https://mp.weixin.qq.com/s/jN1QNP0By9zz4df_96ZmRg)
+- [为什么nvfp4量化不能使用hadamard变换？](https://mp.weixin.qq.com/s/JUbpK8dtq0PQM9vul1DSHg)
+- [为什么mxfp4使用hadamard变换有效而nvfp4不行？](https://mp.weixin.qq.com/s/Th5xHwGXsqgXz3C2xQXDNA)
+
