@@ -166,10 +166,23 @@ if __name__ == '__main__':
     model.eval()
     #
     inference_normal(model, processor)
-
-    if process_word_embeddings:
-        model.lm_head.weight.data = model.language_model.embed_tokens.weight.data.clone()
-
+	
+	# 不能直接这么使用
+	# if process_word_embeddings:
+    #     model.lm_head.weight.data = model.language_model.embed_tokens.weight.data.clone()
+	
+	if process_word_embeddings:
+        print("开始处理tie_embedding")
+        # model.lm_head.weight.data = model.language_model.embed_tokens.weight.data.clone()
+        model.lm_head.weight = torch.nn.Parameter(
+            model.language_model.embed_tokens.weight.data.clone().detach(),
+            requires_grad=False
+        )
+    
+    print(f"复制后 - embed_tokens地址: {model.language_model.embed_tokens.weight.data.data_ptr()}")
+    print(f"复制后 - lm_head地址: {model.lm_head.weight.data.data_ptr()}")
+    print(f"复制后 - 是否共享内存: {model.lm_head.weight.data.data_ptr() == model.language_model.embed_tokens.weight.data.data_ptr()}")
+	
     merge_rmsnorm_in_model(model)
 
     # for k,v in model.language_model.named_parameters():
