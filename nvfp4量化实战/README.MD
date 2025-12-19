@@ -35,3 +35,12 @@ bash utils/predict_vlm.py
 >
 > (EngineCore_DP0 pid=598) WARNING 12-16 07:45:01 [marlin_utils_fp4.py:128] Your GPU does not have native support for FP4 computation but FP4 quantization is being used. Weight-only FP4 compression will be used leveraging the Marlin kernel. This may degrade performance for compute-heavy workloads.
 
+4090可以w4a4推理，但是需要：
+
+```
+export VLLM_USE_NVFP4_CT_EMULATIONS=1
+vllm serve /nfs/FM/gongoubo/new_project/workflow/checkpoints/qwen3-vl-8b-NVFP4 --port 32000 --host 0.0.0.0 --max-model-len 4000
+```
+
+- export VLLM_USE_NVFP4_CT_EMULATIONS=1
+- 并且不使用cuda_graph：enforce-eager
