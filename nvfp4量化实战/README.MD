@@ -44,3 +44,34 @@ vllm serve /nfs/FM/gongoubo/new_project/workflow/checkpoints/qwen3-vl-8b-NVFP4 -
 
 - export VLLM_USE_NVFP4_CT_EMULATIONS=1
 - 并且不使用cuda_graph：enforce-eager
+
+# 其它说明
+
+quant_nvfp4里面提供了三类模型的量化：Qwen-VL、MiniCPM-4.5-V、Gemma3
+
+量化完成后使用5090进行nvfp4的推理，直接pip安装vllm==0.13.0即可。
+
+量化MiniCPM-4.5-V时，修改了modeling_minicpmv.py里面的forward：
+
+```python
+def forward(self, input_ids=None, attention_mask=None):
+        kwargs = {'attention_mask': attention_mask}
+        return self.llm(
+            input_ids=input_ids,
+            **kwargs
+        )
+
+    def forward_v2(self, data, **kwargs):
+        if isinstance(data, torch.Tensor):
+            attention_mask = torch.ones_like(data, dtype=torch.bool)
+            kwargs = {'attention_mask': attention_mask}
+            return self.llm(
+                input_ids=data,
+                **kwargs
+            )
+        ......
+```
+
+使用图文数据集来量化Qwen3-VL，需要安装指定版本的transformers：`cd transformers-main && pip install -e .`
+
+>  百度网盘现在贼恶心，上传文件还要限制。阿里云盘分享又有限制，需要的联系我分享。
