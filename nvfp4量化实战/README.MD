@@ -61,17 +61,21 @@ def forward(self, input_ids=None, attention_mask=None):
             **kwargs
         )
 
-    def forward_v2(self, data, **kwargs):
-        if isinstance(data, torch.Tensor):
-            attention_mask = torch.ones_like(data, dtype=torch.bool)
-            kwargs = {'attention_mask': attention_mask}
-            return self.llm(
-                input_ids=data,
-                **kwargs
-            )
-        ......
+def forward_v2(self, data, **kwargs):
+    if isinstance(data, torch.Tensor):
+        attention_mask = torch.ones_like(data, dtype=torch.bool)
+        kwargs = {'attention_mask': attention_mask}
+        return self.llm(
+            input_ids=data,
+            **kwargs
+        )
+    ......
 ```
+
+**使用图文数据量化的模型一般会比纯文本量化的模型精度要高。**
 
 使用图文数据集来量化Qwen3-VL，需要安装指定版本的transformers：`cd transformers-main && pip install -e .`
 
 >  百度网盘现在贼恶心，上传文件还要限制。阿里云盘分享又有限制，需要的联系我分享。
+
+使用图文数据集量化MiniCPM-4.5-V会报各种各样的错误，这里我已经修改好了，可参考带flickr后缀的代码。
